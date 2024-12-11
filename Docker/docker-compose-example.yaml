@@ -1,0 +1,55 @@
+redis: #key used for name of container
+  image: redis # image you would like to launch to container
+db:
+  image: postgres9.4
+#command format for voting-app
+# docker run -d --name=vote -p 5000:80 --link redis:redis voting-app
+vote:
+  image: voting-app
+  ports: #used to expose ports
+    - 5000:80
+  links: # used to network with other containers 
+    - redis
+# can also have compose build the image needed for a containter as part of the compose
+result:
+  build: ./result #this builds the image when you run the compose file
+  ports:
+    - 5001:80
+  links: #links is no longer needed in version2 of the compose file see below # docker compose creates a bridges network so the containers can communicate
+    - db
+
+version: 2
+services:
+  redis:
+    image: redis
+    networks:
+      - back-end
+  db:
+    image: postgres:9.4
+    networks:
+      -back-end
+  vote:
+    image: voting-app
+    ports:
+      - 5000:80
+    depends_on: #used to make container build order
+      - redis
+    networks:
+      - front-end
+      - back-end
+  result:
+    image: result
+    networks: #tells containter what network it will be part of
+    - front-end
+    - back-end
+networks: #creates different netwroks
+  front-end:
+  back-end:
+
+version: 3
+services: #this version introduces docker swarm
+  redis:
+    image: redis
+  db:
+    image: postgres:9.4
+  

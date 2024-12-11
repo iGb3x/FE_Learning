@@ -9,6 +9,11 @@ docker - base command to call docker
         -it combination allows you to log in and type commands when running an container (good for manually setting up an instance)
         -e allows you to set ENV variables
         -v mounts a volume to the docker container so you can make changes persistent when stopping container
+        --cpus sents how much of host cpu container is allowed to use
+        --memory limits amount of memeory container can use
+        --mount type=value,source=name of the volume,target=path where mounted in the container - best method for drive creation
+        --network tells containter what network to join
+        --restart enables you to set restart policy
         can provide commands at the end (example: cat /var/logs/log)
     docker ps - shows running containers
         -a shows all containers on the host machine
@@ -23,3 +28,15 @@ docker - base command to call docker
         -t allows you to name and tag the image (name:tag)
     docker-compose needs to be installed seperately
         docker-compose up runs the docker-compose file
+    docker volume create creates a volume outside of the docker run command
+    docker network create creates a network with your listed specs
+        --driver
+        --subnet
+        no flag needed for name
+        ls - lists networks
+    docker inspect used to inspect settings of container
+    docker image tag enables you to tag an image (example: docker image tag nginx:latest localhost:5000/nginx:latest)
+    docker push enables you to push images to registry
+    docker login used to login to registry'
+    docker pull enables you to pull an image w/o running it
+    docker images prune -a removes all images without running containers

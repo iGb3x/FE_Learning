@@ -18,7 +18,7 @@ result:
   links: #links is no longer needed in version2 of the compose file see below # docker compose creates a bridges network so the containers can communicate
     - db
 
-version: 2
+version: "2"
 services:
   redis:
     image: redis
@@ -26,6 +26,8 @@ services:
       - back-end
   db:
     image: postgres:9.4
+    environemnt: #used to set env variables
+    POSGRES_PASSWORD: password
     networks:
       -back-end
   vote:
@@ -46,7 +48,7 @@ networks: #creates different netwroks
   front-end:
   back-end:
 
-version: 3
+version: "3"
 services: #this version introduces docker swarm
   redis:
     image: redis

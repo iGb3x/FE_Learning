@@ -14,9 +14,12 @@ docker - base command to call docker
         -a shows all containers on the host machine
     docker images shows all images on the host machine
     docker stop used to stop a docker container
+     can list mutiple containters in the same command ex docker stop container1 containter2 container3
     docker rm used to remove a docker container from the host machine
         can use container name or id (only need to use the first few characters if id)
     docker rmi used to remove a docker image from the host machine
         can use container name or id (only need to use the first few characters if id)
     docker build used to build a image from a docker file
         -t allows you to name and tag the image (name:tag)
+    docker-compose needs to be installed seperately
+        docker-compose up runs the docker-compose file

@@ -1,0 +1,22 @@
+docker - base command to call docker
+    docker run - used to start a container with a specified image - if you don't have the image it will search docker hub for it
+        -d runs it in background
+        --name= used to name the container
+        -p specifies a port host:container
+        --link used to network containers (deprecated)
+        -i Keep STDIN open (interactive)
+        -t opens the terminal (TTY)
+        -it combination allows you to log in and type commands when running an container (good for manually setting up an instance)
+        -e allows you to set ENV variables
+        -v mounts a volume to the docker container so you can make changes persistent when stopping container
+        can provide commands at the end (example: cat /var/logs/log)
+    docker ps - shows running containers
+        -a shows all containers on the host machine
+    docker images shows all images on the host machine
+    docker stop used to stop a docker container
+    docker rm used to remove a docker container from the host machine
+        can use container name or id (only need to use the first few characters if id)
+    docker rmi used to remove a docker image from the host machine
+        can use container name or id (only need to use the first few characters if id)
+    docker build used to build a image from a docker file
+        -t allows you to name and tag the image (name:tag)
